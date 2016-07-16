@@ -49,6 +49,9 @@ defmodule Formerer.Router do
       get "columns/edit", FormColumnsController, :edit
       post "columns/update", FormColumnsController, :update
     end
+
+    get "forms/:form_id/settings", FormSettingsController, :edit
+
   end
 
   if Mix.env == :dev do

@@ -7,6 +7,10 @@
         <span data-token="<%= get_csrf_token %>" data-url="<%= forms_path(@conn, :update, @form) %>" data-behaviour="form-name">
           <%= @form.name %>
         </span>
+        &nbsp;
+        <button class="mdl-button mdl-button--icon" data-behaviour="edit-form-name">
+          <i class="material-icons">edit</i>
+        </button>
       </h4>
     </div>
 
@@ -23,9 +27,9 @@
     </div>
 
     <div class="mdl-card__menu">
-      <button class="mdl-button mdl-button--icon" data-behaviour="edit-form-name">
-        <i class="material-icons">edit</i>
-      </button>
+      <a href="<%= form_settings_path(@conn, :edit, @form) %>" class="mdl-button mdl-button--icon">
+        <i class="material-icons">settings</i>
+      </a>
     </div>
   </div>
 </div>
