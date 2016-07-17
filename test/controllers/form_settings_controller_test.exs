@@ -17,6 +17,33 @@ defmodule Formerer.FormSettingsControllerTest do
       assert conn.assigns[:form].id == form.id
     end
 
+    test "user cant view settings page for other users form", %{ conn: conn, user: user } do
+      form = FormFactory.create(:form)
+      conn = get(conn, form_settings_path(conn, :edit, form))
+
+      assert response(conn, 404)
+    end
+
+    test "user cant view settings page for form that doesn't exist", %{ conn: conn, user: user } do
+      conn = get(conn, form_settings_path(conn, :edit, 1))
+      assert response(conn, 404)
+    end
+
+  end
+
+  describe "DELETE #destroy" do
+
+    setup %{ conn: conn, user: user } do
+      form = FormFactory.create(:form, user: user)
+      { :ok, conn: conn, user: user, form: form }
+    end
+
+    test "user can delete their own form", %{ conn: conn, user: user, form: form } do
+      delete(conn, forms_path(conn, :delete, form))
+
+      assert Repo.get(Formerer.Form, form.id) == nil
+    end
+
   end
 
 end

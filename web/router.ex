@@ -45,7 +45,7 @@ defmodule Formerer.Router do
     pipe_through :activated_account
     resources "users", UsersController, only: [:edit, :update]
 
-    resources "forms", FormsController, only: [:new, :create, :update, :show] do
+    resources "forms", FormsController, only: [:new, :create, :update, :show, :delete] do
       get "columns/edit", FormColumnsController, :edit
       post "columns/update", FormColumnsController, :update
     end

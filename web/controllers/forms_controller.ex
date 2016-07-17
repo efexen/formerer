@@ -42,4 +42,18 @@ defmodule Formerer.FormsController do
     end
   end
 
+  def delete(conn, %{ "id" => id }) do
+    case current_user(conn) |> get_user_form(id) do
+      nil ->
+        send_resp(conn, 404, "Not Found")
+      form ->
+        case Repo.delete(form) do
+          { :ok, _ } ->
+            redirect(conn, to: dashboard_path(conn, :index))
+          { :error, form } ->
+            send_resp(conn, 400, form)
+        end
+    end
+  end
+
 end
