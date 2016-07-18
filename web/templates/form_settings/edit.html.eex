@@ -1,0 +1,22 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--3-col"></div>
+  <div class="mdl-cell mdl-card mdl-shadow--2dp mdl-cell--6-col">
+    <div class="mdl-card__title">
+      <h4 class="mdl-card__title-text">
+        <button class="mdl-button mdl-button--icon" data-behaviour="edit-form-name">
+          <i class="material-icons">edit</i>
+        </button>
+        &nbsp;
+        Settings - <%= @form.name %>
+      </h4>
+    </div>
+
+    <div class="mdl-card__supporting-text">
+      <%= link to: forms_path(@conn, :delete, @form), method: :delete, data: [confirm: "Are you sure you want to delete this form?"], class: "form-delete-button mdl-button mdl-button--raised mdl-button--colored" do %>
+        <i class="material-icons">delete</i>
+        Delete Form
+      <% end %>
+    </div>
+
+  </div>
+</div>

@@ -31,19 +31,4 @@ defmodule Formerer.FormSettingsControllerTest do
 
   end
 
-  describe "DELETE #destroy" do
-
-    setup %{ conn: conn, user: user } do
-      form = FormFactory.create(:form, user: user)
-      { :ok, conn: conn, user: user, form: form }
-    end
-
-    test "user can delete their own form", %{ conn: conn, user: user, form: form } do
-      delete(conn, forms_path(conn, :delete, form))
-
-      assert Repo.get(Formerer.Form, form.id) == nil
-    end
-
-  end
-
 end

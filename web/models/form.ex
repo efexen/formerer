@@ -7,7 +7,8 @@ defmodule Formerer.Form do
     field :columns, {:array, :string}
     field :integrations, {:array, :string}
     belongs_to :user, Formerer.User
-    has_many :submissions, Formerer.Submission
+
+    has_many :submissions, Formerer.Submission, on_delete: :delete_all
 
     timestamps
   end
