@@ -5,7 +5,10 @@ defmodule Formerer.Form do
     field :name, :string
     field :identifier, :string
     field :columns, {:array, :string}
+
+    field :filters, {:array, :string}
     field :integrations, {:array, :string}
+
     belongs_to :user, Formerer.User
 
     has_many :submissions, Formerer.Submission, on_delete: :delete_all
