@@ -3,7 +3,7 @@ defmodule Formerer.AccountActivationControllerTest do
   import Formerer.UserFactory
 
   setup %{conn: conn} = config do
-    user = create(:user, activated: false, token: "activationtoken")
+    user = insert(:user, activated: false, token: "activationtoken")
     {:ok, conn: conn, user: user}
   end
 

@@ -1,6 +1,6 @@
 defmodule Formerer.Feature.RegistrationTest do
   import String, only: [contains?: 2]
-  import Formerer.UserFactory, only: [create: 1]
+  import Formerer.UserFactory, only: [insert: 1]
 
   use ExUnit.Case
   use Hound.Helpers
@@ -21,7 +21,7 @@ defmodule Formerer.Feature.RegistrationTest do
   end
 
   test "already taken email address shows error to user" do
-    user = create(:user)
+    user = insert(:user)
 
     navigate_to("/register")
     fill_field(email_field, user.email)

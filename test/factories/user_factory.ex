@@ -4,7 +4,7 @@ defmodule Formerer.UserFactory do
 
   alias Formerer.User
 
-  def factory(:user) do
+  def user_factory do
     %User{
       email: sequence(:email, &"email#{&1}@example.com"),
       password_digest: hashpwsalt("ins3cure"),

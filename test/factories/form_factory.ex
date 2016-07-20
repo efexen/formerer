@@ -3,7 +3,7 @@ defmodule Formerer.FormFactory do
 
   alias Formerer.{Form, UserFactory}
 
-  def factory(:form) do
+  def form_factory do
     %Form{
       name: sequence(:name, &"Test Form ##{&1}"),
       user: UserFactory.build(:user),

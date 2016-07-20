@@ -6,7 +6,7 @@ defmodule Formerer.PasswordResetControllerTest do
 
   setup %{conn: conn} = config do
     if %{email: email, password: password, token: token} = config do
-      user = create(:user, [email: email, password_digest: hashpwsalt(password), token: token])
+      user = insert(:user, [email: email, password_digest: hashpwsalt(password), token: token])
       {:ok, conn: conn, user: user}
     else
       :ok

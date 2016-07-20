@@ -4,7 +4,7 @@ defmodule Formerer.FormsControllerTest do
 
   setup %{conn: conn} = config do
     if %{activated: activated} = config do
-      user = UserFactory.create(:user, [activated: activated])
+      user = UserFactory.insert(:user, [activated: activated])
       login_custom_user(conn, user)
     else
       :ok
@@ -29,7 +29,7 @@ defmodule Formerer.FormsControllerTest do
   describe "DELETE #destroy" do
 
     setup %{ conn: conn, user: user } do
-      form = FormFactory.create(:form, user: user)
+      form = FormFactory.insert(:form, user: user)
       { :ok, conn: conn, user: user, form: form }
     end
 
@@ -49,7 +49,7 @@ defmodule Formerer.FormsControllerTest do
 
     @tag activated: true
     test "user can not delete someone elses form", %{ conn: conn, user: user, form: form } do
-      other_form = FormFactory.create(:form)
+      other_form = FormFactory.insert(:form)
 
       conn = delete(conn, forms_path(conn, :delete, other_form))
       assert response(conn, 404)

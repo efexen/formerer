@@ -3,14 +3,14 @@ defmodule Formerer.FormSettingsControllerTest do
   alias Formerer.{UserFactory, FormFactory}
 
   setup %{conn: conn} do
-    user = UserFactory.create(:user)
+    user = UserFactory.insert(:user)
     login_custom_user(conn, user)
   end
 
   describe "GET #edit" do
 
     test "user can view settings page for a form they own", %{ conn: conn, user: user } do
-      form = FormFactory.create(:form, [user: user])
+      form = FormFactory.insert(:form, [user: user])
       conn = get(conn, form_settings_path(conn, :edit, form))
 
       assert html_response(conn, 200)
@@ -18,7 +18,7 @@ defmodule Formerer.FormSettingsControllerTest do
     end
 
     test "user cant view settings page for other users form", %{ conn: conn, user: user } do
-      form = FormFactory.create(:form)
+      form = FormFactory.insert(:form)
       conn = get(conn, form_settings_path(conn, :edit, form))
 
       assert response(conn, 404)

@@ -4,7 +4,7 @@ defmodule Formerer.TestsHelpers.UserHelper do
   import Comeonin.Bcrypt, only: [hashpwsalt: 1]
 
   def login_with_email_and_pass(conn, email, password) do
-    user = create(:user, [email: email, password_digest: hashpwsalt(password)])
+    user = insert(:user, [email: email, password_digest: hashpwsalt(password)])
     conn = Plug.Conn.assign(conn, :user, user)
     {:ok, conn: conn, user: user}
   end
@@ -15,7 +15,7 @@ defmodule Formerer.TestsHelpers.UserHelper do
   end
 
   def login_user(conn) do
-    user = create(:user)
+    user = insert(:user)
     conn = Plug.Conn.assign(conn, :user, user)
     {:ok, conn: conn, user: user}
   end

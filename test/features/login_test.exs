@@ -8,7 +8,7 @@ defmodule Formerer.Feature.LoginTest do
   hound_session
 
   setup_all do
-    {:ok, user: create(:user)}
+    {:ok, user: insert(:user)}
   end
 
   test "existing user can login", test_data do

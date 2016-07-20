@@ -8,7 +8,7 @@ defmodule Formerer.Feature.FormTest do
   hound_session
 
   setup_all do
-    {:ok, user: UserFactory.create(:user)}
+    {:ok, user: UserFactory.insert(:user)}
   end
 
   test "user can create a new form", test_data do
@@ -26,7 +26,7 @@ defmodule Formerer.Feature.FormTest do
   end
 
   test "user can navigate to form and view the endpoint url", test_data do
-    form = FormFactory.create(:form, [user: test_data[:user]])
+    form = FormFactory.insert(:form, [user: test_data[:user]])
     login(test_data[:user].email, "ins3cure")
 
     find_element(:css, ".mdl-layout__drawer-button i") |> click
@@ -39,7 +39,7 @@ defmodule Formerer.Feature.FormTest do
   end
 
   test "user can rename the form", test_data do
-    form = FormFactory.create(:form, [user: test_data[:user]])
+    form = FormFactory.insert(:form, [user: test_data[:user]])
     login(test_data[:user].email, "ins3cure")
     navigate_to("/forms/#{form.id}")
 

@@ -18,31 +18,31 @@ defmodule Formerer.UserTest do
   end
 
   test "password_change_changeset with valid attributes" do
-    user = create(:user, [password_digest: hashpwsalt("ins3cure")])
+    user = insert(:user, [password_digest: hashpwsalt("ins3cure")])
     changeset = User.password_change_changeset(user, %{old_password: "ins3cure", password: "newpassword", confirm_password: "newpassword"})
     assert changeset.valid?
   end
 
   test "password_change_changeset with invalid old password" do
-    user = create(:user, [password_digest: hashpwsalt("ins3cure")])
+    user = insert(:user, [password_digest: hashpwsalt("ins3cure")])
     changeset = User.password_change_changeset(user, %{old_password: "too3cure", password: "newpassword", confirm_password: "newpassword"})
     refute changeset.valid?
   end
 
   test "password_change_changeset with new password confirmation not matching" do
-    user = create(:user, [password_digest: hashpwsalt("ins3cure")])
+    user = insert(:user, [password_digest: hashpwsalt("ins3cure")])
     changeset = User.password_change_changeset(user, %{old_password: "ins3cure", password: "newpassword", confirm_password: "otherpassword"})
     refute changeset.valid?
   end
 
   test "token_changeset with valid attributes" do
-    user = create(:user, [token: "usertoken"])
+    user = insert(:user, [token: "usertoken"])
     changeset = User.token_changeset(user, %{token: "usertoken"})
     assert changeset.valid?
   end
 
   test "token_changeset with wrong token" do
-    user = create(:user, [token: "usertoken"])
+    user = insert(:user, [token: "usertoken"])
     changeset = User.token_changeset(user, %{token: "wrongtoken"})
     refute changeset.valid?
   end
