@@ -1,17 +1,19 @@
 defmodule Formerer.SubmissionCreatorTest do
   use Formerer.ActionCase
 
-  alias Formerer.{FormFactory, SubmissionCreator, Submission}
+  alias Formerer.{SubmissionFactory, FormFactory, SubmissionCreator, Submission}
 
   setup do
-    form = FormFactory.create(:form)
+    form = FormFactory.insert(:form)
     { :ok, form: form }
   end
 
   describe ".create" do
 
     test "creating submission returns ok result", %{ form: form } do
-      changeset = Submission.changeset(%Submission{}, %{ fields: %{ name: "Tester" } })
+      submission_attributes = SubmissionFactory.params_with_assocs(:submission, form_id: form.id)
+
+      changeset = Submission.changeset(%Submission{}, submission_attributes)
 
       { result, submission } = SubmissionCreator.create(form, changeset)
 

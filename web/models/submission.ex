@@ -9,7 +9,7 @@ defmodule Formerer.Submission do
     timestamps
   end
 
-  @required_fields ~w(fields ip_address)
+  @required_fields ~w(fields ip_address form_id)
   @optional_fields ~w()
 
   @doc """

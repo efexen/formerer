@@ -6,8 +6,8 @@ defmodule Formerer.Form do
     field :identifier, :string
     field :columns, {:array, :string}
 
-    field :filters, {:array, :string}
-    field :integrations, {:array, :string}
+    field :filters, {:array, :string}, default: []
+    field :integrations, {:array, :string}, default: []
 
     belongs_to :user, Formerer.User
 
