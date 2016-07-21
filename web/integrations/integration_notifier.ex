@@ -8,8 +8,8 @@ defmodule Formerer.IntegrationNotifier do
     |> Enum.each(&(notify_integration(&1, form, submission)))
   end
 
-  defp notify_integration(:slack, form, submission) do
-    Slack.notify(form, submission)
+  defp notify_integration(integration, form, submission) do
+    Application.get_env(:formerer, :integrations)[integration].notify(form, submission)
   end
 
 end
