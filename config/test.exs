@@ -18,6 +18,10 @@ config :formerer, Formerer.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
+config :formerer, :integrations, [
+  slack: Formerer.Integration.Test
+]
+
 #modify hashing settings for test environment to speed up tests
 config :comeonin, :bcrypt_log_rounds, 4
 config :comeonin, :pbkdf2_rounds, 1

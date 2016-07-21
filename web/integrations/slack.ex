@@ -1,4 +1,6 @@
 defmodule Formerer.Integration.Slack do
+  @behaviour Formerer.Integration
+
   import Formerer.ColumnFormatter, only: [pretty_column_name: 1]
   import Formerer.SubmissionsView, only: [all_fields: 1]
 

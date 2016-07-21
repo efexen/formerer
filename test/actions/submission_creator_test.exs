@@ -20,6 +20,12 @@ defmodule Formerer.SubmissionCreatorTest do
       assert result == :ok
     end
 
+    test "successfully creating a submission triggers integrations", %{ form: form } do
+
+      
+
+    end
+
   end
 
 end
