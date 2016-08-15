@@ -3,11 +3,12 @@ defmodule Formerer.SubmissionTest do
 
   alias Formerer.Submission
 
-  @valid_attrs %{fields: %{}, ip_address: "some content"}
+  @valid_attrs %{fields: %{}, ip_address: "some content", form_id: 0}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
     changeset = Submission.changeset(%Submission{}, @valid_attrs)
+    IO.inspect changeset
     assert changeset.valid?
   end
 
