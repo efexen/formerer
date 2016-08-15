@@ -1,7 +1,8 @@
 defmodule Formerer.Integration.Test do
   @behaviour Formerer.Integration
 
-  def notify(_form, _submission) do
+  def notify(form, _submission) do
+    IO.puts "Submission for form #{ form.id }"
   end
 
 end

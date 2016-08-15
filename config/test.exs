@@ -19,7 +19,7 @@ config :formerer, Formerer.Repo,
   pool: Ecto.Adapters.SQL.Sandbox
 
 config :formerer, :integrations, [
-  slack: Formerer.Integration.Test
+  test: Formerer.Integration.Test
 ]
 
 #modify hashing settings for test environment to speed up tests

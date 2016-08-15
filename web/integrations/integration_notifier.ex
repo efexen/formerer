@@ -1,7 +1,6 @@
 defmodule Formerer.IntegrationNotifier do
 
   alias Formerer.Form
-  alias Formerer.Integration.{Slack}
 
   def notify_integrations(form, submission) do
     form.integrations
