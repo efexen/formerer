@@ -8,7 +8,6 @@ defmodule Formerer.SubmissionTest do
 
   test "changeset with valid attributes" do
     changeset = Submission.changeset(%Submission{}, @valid_attrs)
-    IO.inspect changeset
     assert changeset.valid?
   end
 

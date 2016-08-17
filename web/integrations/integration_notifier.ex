@@ -1,7 +1,5 @@
 defmodule Formerer.IntegrationNotifier do
 
-  alias Formerer.Form
-
   def notify_integrations(form, submission) do
     form.integrations
     |> Enum.each(&(notify_integration(&1, form, submission)))

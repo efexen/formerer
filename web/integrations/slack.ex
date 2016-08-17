@@ -44,7 +44,7 @@ defmodule Formerer.Integration.Slack do
     String.length(value) < 30
   end
 
-  defp short_value?(value) do
+  defp short_value?(_value) do
     true
   end
 

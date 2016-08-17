@@ -22,6 +22,10 @@ config :formerer, :integrations, [
   test: Formerer.Integration.Test
 ]
 
+config :formerer, :filters, [
+  stop_test: Formerer.Filter.StopTest
+]
+
 #modify hashing settings for test environment to speed up tests
 config :comeonin, :bcrypt_log_rounds, 4
 config :comeonin, :pbkdf2_rounds, 1
